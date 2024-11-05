@@ -7,6 +7,8 @@ import { MessagesComponent } from './presentation/pages/dashboard/components/mes
 import { ActivitiesComponent } from './presentation/pages/dashboard/components/activities/activities.component';
 import { SectorsComponent } from './presentation/pages/dashboard/components/sectors/sectors.component';
 import { WarehouseComponent } from './presentation/pages/dashboard/components/warehouse/warehouse.component';
+import { ReportsComponent } from './presentation/pages/dashboard/components/reports/reports.component';
+import { ConfigurationComponent } from './presentation/pages/dashboard/components/configuration/configuration.component';
 
 export const routes: Routes = [
 
@@ -37,6 +39,12 @@ export const routes: Routes = [
       },
       {
         path: 'almacen', component: WarehouseComponent
+      },
+      {
+        path: 'reportes', component: ReportsComponent
+      },
+      {
+        path: 'configuracion', component: ConfigurationComponent
       }
     ]
   },

@@ -1,6 +1,6 @@
-<div class="flex space-x-4">
+<div class="h-[54em] flex space-x-4">
   <!--Color palette Sidebar -->
-  <div class="w-full h-svh bg-[#16324F] text-white rounded-lg p-4">
+  <div class="w-64 bg-[#16324F] text-white rounded-lg p-4">
     <div class="flex items-center justify-between mb-6">
         <div class="flex items-center">
             <div class="w-8 h-8 bg-[#3E92CC] rounded-lg mr-2"></div>
@@ -11,23 +11,23 @@
         <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Menú</h3>
         <ul class="space-y-2 mt-2">
             <li>
-              <a routerLink="/dashboard" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
-                <svg class="h-5 w-5 mr-3" width="24" height="24" viewBox="0 -960 960 960" fill="currentColor">
-                  <path d="M80-120v-80h800v80H80Zm40-120v-280h120v280H120Zm200 0v-480h120v480H320Zm200 0v-360h120v360H520Zm200 0v-600h120v600H720Z"/>
+              <a href="#" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
+                <svg class="h-5 w-5 mr-3" width="24px" height="24px" viewBox="0 -960 960 960" fill="currentColor">
+                  <path d="M480-320l-40-40 120-120h-400v-80h400L440-680l40-40 200 200-200 200Zm-240 400q-33 0-56.5-23.5T160-200v-560q0-33 23.5-56.5T240-840h480q33 0 56.5 23.5T800-760v300h-80v-300H240v560h160v80H240Z"/>
                 </svg>
                 Actividad reciente
               </a>
             </li>
             <li>
-              <a routerLink="empleados" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
+              <a href="#" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
                 <svg class="h-5 w-5 mr-3" width="24px" height="24px" viewBox="0 -960 960 960" fill="currentColor">
-                  <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/>
+                  <path d="M160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm0-80h640v-440H160v440Zm240-520h160v-80H400v80ZM160-200v-440 440Z"/>
                 </svg>
-                Empleados
+                Actividades asignadas
               </a>
             </li>
             <li>
-              <a routerLink="mensajes" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
+              <a href="#" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
                 <svg class="h-5 w-5 mr-3" width="24px" height="24px" viewBox="0 -960 960 960" fill="currentColor">
                   <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/>
                 </svg>
@@ -36,23 +36,7 @@
                 </a>
             </li>
             <li>
-              <a routerLink="actividades" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
-                <svg class="h-5 w-5 mr-3" width="24px" height="24px" viewBox="0 -960 960 960" fill="currentColor">
-                  <path d="M160-120q-33 0-56.5-23.5T80-200v-440q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v440q0 33-23.5 56.5T800-120H160Zm0-80h640v-440H160v440Zm240-520h160v-80H400v80ZM160-200v-440 440Z"/>
-                </svg>
-                Actividades
-              </a>
-            </li>
-            <li>
-              <a routerLink="sectores" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
-                <svg class="h-5 w-5 mr-3" width="24px" height="24px" viewBox="0 -960 960 960" fill="currentColor">
-                  <path d="M80-120v-650l200-150 200 150v90h400v560H80Zm80-80h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm0-160h80v-80h-80v80Zm160 0h80v-80h-80v80Zm0 480h480v-400H320v400Zm240-240v-80h160v80H560Zm0 160v-80h160v80H560ZM400-440v-80h80v80h-80Zm0 160v-80h80v80h-80Z"/>
-                </svg>
-                  Sectores
-                </a>
-            </li>
-            <li>
-              <a routerLink="almacen" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
+              <a href="#" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
                 <svg class="h-5 w-5 mr-3" width="24px" height="24px" viewBox="0 -960 960 960" fill="currentColor">
                   <path d="M160-200h80v-320h480v320h80v-426L480-754 160-626v426Zm-80 80v-560l400-160 400 160v560H640v-320H320v320H80Zm280 0v-80h80v80h-80Zm80-120v-80h80v80h-80Zm80 120v-80h80v80h-80ZM240-520h480-480Z"/>
                 </svg>
@@ -66,15 +50,7 @@
         <nav class="mt-3">
             <ul class="space-y-2">
                 <li>
-                  <a routerLink="reportes" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
-                    <svg class="h-5 w-5 mr-3" width="24" height="24" viewBox="0 -960 960 960" fill="currentColor">
-                      <path d="M80-120v-80h800v80H80Zm40-120v-280h120v280H120Zm200 0v-480h120v480H320Zm200 0v-360h120v360H520Zm200 0v-600h120v600H720Z"/>
-                    </svg>
-                    Reportes
-                  </a>
-                </li>
-                <li>
-                  <a routerLink="configuracion" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
+                  <a href="#" class="flex items-center py-2 px-4 rounded hover:bg-[#2A628F]">
                     <svg class="h-5 w-5 mr-3" width="24px" height="24px" viewBox="0 -960 960 960" fill="currentColor">
                       <path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z"/>
                     </svg>
@@ -93,5 +69,4 @@
         </nav>
     </div>
   </div>
-
 </div>

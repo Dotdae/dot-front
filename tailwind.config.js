@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateRows: {
-        '8': 'auto auto 3em'
+        '8': 'auto auto'
       },
       gridTemplateColumns: {
         '8': '16em auto auto'
