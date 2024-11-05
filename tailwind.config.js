@@ -6,13 +6,12 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateRows: {
-        '8': 'auto auto 5em'
+        '8': 'auto auto 3em'
       },
       gridTemplateColumns: {
-        '8': '18em auto auto'
+        '8': '16em auto auto'
       }
     },
   },
   plugins: [],
 }
-
