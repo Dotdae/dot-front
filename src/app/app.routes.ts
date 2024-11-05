@@ -9,6 +9,7 @@ import { SectorsComponent } from './presentation/pages/dashboard/components/sect
 import { WarehouseComponent } from './presentation/pages/dashboard/components/warehouse/warehouse.component';
 import { ReportsComponent } from './presentation/pages/dashboard/components/reports/reports.component';
 import { ConfigurationComponent } from './presentation/pages/dashboard/components/configuration/configuration.component';
+import { AddComponent } from './presentation/pages/dashboard/components/employees/add/add.component';
 
 export const routes: Routes = [
 
@@ -27,6 +28,9 @@ export const routes: Routes = [
       },
       {
         path: 'empleados', component: EmployeesComponent
+      },
+      {
+        path: 'agregar', component: AddComponent
       },
       {
         path: 'mensajes', component: MessagesComponent
