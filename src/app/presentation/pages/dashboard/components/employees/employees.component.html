@@ -1,1 +1,252 @@
-<p>employees works!</p>
+<div class="flex h-screen">
+  <!-- Main Content -->
+  <main class="flex-1 overflow-y-auto">
+      <!-- Dashboard Content -->
+      <div class="p-10">
+          <h1 class="text-2xl font-bold mb-6 text-center">Empleados</h1>
+          <!-- Employee Stats -->
+          <div class="grid grid-cols-4 gap-4 mb-6">
+              <div class="bg-purple-50 p-4 rounded-lg shadow">
+                  <div class="flex items-center">
+                      <i class="icon icon-users text-blue-500 w-8 h-8"></i>
+                      <div class="ml-4">
+                          <p class="text-sm text-gray-500">Número total de empleados</p>
+                          <p class="text-xl font-semibold">100</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-yellow-50 p-4 rounded-lg shadow">
+                  <div class="flex items-center">
+                      <i class="icon icon-user-plus text-green-500 w-8 h-8"></i>
+                      <div class="ml-4">
+                          <p class="text-sm text-gray-500">Empleados nuevos</p>
+                          <p class="text-xl font-semibold">15</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg shadow">
+                  <div class="flex items-center">
+                      <i class="icon icon-user text-blue-500 w-8 h-8"></i>
+                      <div class="ml-4">
+                          <p class="text-sm text-gray-500">Hombres</p>
+                          <p class="text-xl font-semibold">65</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="bg-pink-50 p-4 rounded-lg shadow">
+                  <div class="flex items-center">
+                      <i class="icon icon-user text-pink-500 w-8 h-8"></i>
+                      <div class="ml-4">
+                          <p class="text-sm text-gray-500">Mujeres</p>
+                          <p class="text-xl font-semibold">20</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Employee List -->
+          <div class="bg-white rounded-lg shadow">
+              <div class="p-4 flex justify-between items-center border-b">
+                  <div class="flex space-x-4">
+                      <input type="text" placeholder="Nombre del empleado" class="border rounded px-2 py-1">
+                      <select class="border rounded px-2 py-1">
+                          <option>Sector</option>
+                      </select>
+                      <select class="border rounded px-2 py-1">
+                          <option>Estatus</option>
+                      </select>
+                  </div>
+                  <button class="bg-green-400 text-white px-4 py-2 rounded-lg flex items-center">
+                      <i class="icon icon-plus w-4 h-4 mr-2"></i>
+                      Agregar empleado
+                  </button>
+              </div>
+             <!-- Contenedor para tarjetas con scroll -->
+              <div class="p-4 max-h-[40em] overflow-y-auto custom-scroll">
+                  <div class="grid grid-cols-5 gap-6">
+                      <!-- Employee Card (repeat for each employee) -->
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-green-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-green-400">Estatus: Activo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-red-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-red-400">Estatus: Inactivo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-yellow-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-yellow-400">Estatus: Pausa</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-green-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-green-400">Estatus: Activo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-red-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-red-400">Estatus: Inactivo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-yellow-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-yellow-400">Estatus: Pausa</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-green-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-green-400">Estatus: Activo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-red-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-red-400">Estatus: Inactivo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-yellow-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-yellow-400">Estatus: Pausa</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-green-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-green-400">Estatus: Activo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-red-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-red-400">Estatus: Inactivo</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                      <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
+                          <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
+                          <h3 class="font-semibold text-lg text-white font-poppins">Christopher Ortega</h3>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>1687</strong></p>
+                          <div class="flex items-center justify-center">
+                              <span class="h-2 w-2 rounded-full animate-pulse bg-yellow-400"></span>
+                              <span class="text-xs font-roboto ml-2 text-yellow-400">Estatus: Pausa</span>
+                          </div>
+                          <div class="flex justify-between mt-3">
+                              <button class="text-white"><i class="icon icon-circle-fading-plus w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-mail w-4 h-4"></i></button>
+                              <button class="text-white"><i class="icon icon-trash w-4 h-4"></i></button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </main>
+</div>
