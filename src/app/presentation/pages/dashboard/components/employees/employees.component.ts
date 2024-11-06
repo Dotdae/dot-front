@@ -13,6 +13,7 @@ import { Employee } from '../../../../../domain/models/employee.model';
 export class EmployeesComponent implements OnInit {
 
   employees: Employee[] = []
+  employeeNumber: number = 0;
   error: string = '';
 
   constructor(private getAllEmployesUseCase: GetAllEmployeesUseCase){}
@@ -28,7 +29,7 @@ export class EmployeesComponent implements OnInit {
     this.getAllEmployesUseCase.execute().subscribe({
       next: (data: Employee[]) => {
         this.employees = data;
-        console.log(this.employees);
+        this.employeeNumber = this.employees.length;
       },
       error: (err) => {
         this.error = 'Error al cargar empleados: ' + err.message;

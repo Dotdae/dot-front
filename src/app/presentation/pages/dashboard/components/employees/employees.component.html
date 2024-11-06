@@ -11,7 +11,7 @@
                       <i class="icon icon-users text-blue-500 w-8 h-8"></i>
                       <div class="ml-4">
                           <p class="text-sm text-gray-500">Número total de empleados</p>
-                          <p class="text-xl font-semibold">100</p>
+                          <p class="text-xl font-semibold">{{ employeeNumber }}</p>
                       </div>
                   </div>
               </div>
@@ -68,7 +68,7 @@
                         <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
                           <img src="https://github.com/Dotdae.png" alt="Employee" class="mx-auto w-12 h-12 object-cover rounded-lg mb-4">
                           <h3 class="font-semibold text-lg text-white font-poppins">{{ employee.nombre }}</h3>
-                          <p class="text-xs text-gray-300 font-roboto mb-2">Frontend Developer</p>
+                          <p class="text-xs text-gray-300 font-roboto mb-2">{{ employee.rol }}</p>
                           <p class="text-xs text-gray-300 font-roboto mb-2">Número de empleado: <strong>{{ employee.id }}</strong></p>
                           <div class="flex items-center justify-center">
                               <span class="h-2 w-2 rounded-full animate-pulse bg-green-400"></span>
