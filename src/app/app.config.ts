@@ -9,6 +9,11 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { EMPLOYEE_REPOSITORY_TOKEN } from './domain/repositories/employee/employee-respository.token';
 import { EmployeeRepositoryImplementation } from './domain/repositories/employee/employee.repository.implementation';
 
+// Auth.
+
+import { AUTH_REPOSITORY_TOKEN } from '@domain/repositories/auth/auth.repository.token';
+import { AuthRepositoryImplementation } from '@domain/repositories/auth/auth.repository.implementation';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()), provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
@@ -16,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     // Clean architecture providers.
 
     { provide: EMPLOYEE_REPOSITORY_TOKEN, useClass: EmployeeRepositoryImplementation },
+    { provide: AUTH_REPOSITORY_TOKEN, useClass: AuthRepositoryImplementation }
 
   ]
 };

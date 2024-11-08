@@ -11,6 +11,10 @@ import { ReportsComponent } from './presentation/pages/dashboard/components/repo
 import { ConfigurationComponent } from './presentation/pages/dashboard/components/configuration/configuration.component';
 import { AddComponent } from './presentation/pages/dashboard/components/employees/add/add.component';
 
+// Guards.
+
+import { AuthGuard } from './application/guards/auth.guard';
+
 export const routes: Routes = [
 
   // Login route.
@@ -21,7 +25,7 @@ export const routes: Routes = [
 
   // Dashboard route.
   {
-    path: 'dashboard', component: DashboardComponent,
+    path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
       {
           path: '', component: RecentComponent,
