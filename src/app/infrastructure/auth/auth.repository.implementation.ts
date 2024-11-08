@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { AuthRepository } from '@domain/repositories/auth/auth.repository';
 import { Router } from '@angular/router';
+import { Employee } from '@domain/models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,16 @@ export class AuthRepositoryImplementation implements AuthRepository {
 
   private apiUrl = 'http://localhost:4000/api';
   private employeeKey = 'empleado';
-  private tokenKey = 'token';
 
   constructor(
     private http: HttpClient,
     private router: Router
   ){}
 
-  login(numeroEmpleado: number, empleadoPassword: string): Observable<{ token: string}>{
-    return this.http.post<{ token: string}>(`${this.apiUrl}/login`, { numeroEmpleado, empleadoPassword }).pipe(
-      tap(response => {
-        localStorage.setItem(this.employeeKey, JSON.stringify(response));
+  login(numeroEmpleado: number, empleadoPassword: string): Observable<Employee>{
+    return this.http.post<Employee>(`${this.apiUrl}/login`, { numeroEmpleado, empleadoPassword }).pipe(
+      tap(employee => {
+        localStorage.setItem(this.employeeKey, JSON.stringify(employee));
       })
     )
   }
@@ -32,17 +32,19 @@ export class AuthRepositoryImplementation implements AuthRepository {
     this.router.navigate(['/login']);
   }
 
-  getEmployee(): { id: number, nombre: string, edad: number, direccion: string, salario: number, rol: string } | null {
-    const user = localStorage.getItem('empleado');
+  getEmployee(): Employee | null {
+    const user = localStorage.getItem(this.employeeKey);
     return user ? JSON.parse(user) : null;
   }
 
-  storeToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
+  getEmployeeName(): string {
+    const employee = this.getEmployee();
+    return employee ? employee.nombre : 'Desconocido';
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+  getEmployeeRole(): string {
+    const employee = this.getEmployee();
+    return employee ? employee.rol : 'Empleado';
   }
 
 }

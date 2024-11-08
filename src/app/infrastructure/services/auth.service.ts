@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginUseCase } from '@application/usecases/auth/login.usecase';
 import { LogoutUseCase } from '@application/usecases/auth/logout.usecase';
+import { Employee } from '@domain/models/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
     private logoutUseCase: LogoutUseCase
   ) { }
 
-  login(numeroEmpleado: number, empleadoPassword: string): Observable<{ token: string}> {
+  login(numeroEmpleado: number, empleadoPassword: string): Observable<Employee> {
 
     return this.loginUseCase.execute(numeroEmpleado, empleadoPassword);
 
@@ -24,7 +25,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken');
+    return !!localStorage.getItem('empleado');
   }
 
 }
