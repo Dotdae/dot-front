@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CreateEmployeeUseCase } from '../../../../../../domain/usecases/employee/create-employee.usecase';
-import { Employee } from '../../../../../../domain/models/employee.model';
+import { CreateEmployeeUseCase } from '@domain/usecases/employee/create-employee.usecase';
+import { Employee } from '@domain/models/employee.model';
 @Component({
   selector: 'app-add',
   standalone: true,

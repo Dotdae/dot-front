@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { GetAllEmployeesUseCase } from '../../../../../domain/usecases/employee/get-all-employees.usecase';
-import { Employee } from '../../../../../domain/models/employee.model';
+import { GetAllEmployeesUseCase } from '@domain/usecases/employee/get-all-employees.usecase';
+import { Employee } from '@domain/models/employee.model';
 @Component({
   selector: 'app-employees',
   standalone: true,
