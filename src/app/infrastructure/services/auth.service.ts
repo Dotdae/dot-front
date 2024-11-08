@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginUseCase } from '@domain/usecases/auth/login.usecase';
-import { LogoutUseCase } from '@domain/usecases/auth/logout.usecase';
+import { LoginUseCase } from '@application/usecases/auth/login.usecase';
+import { LogoutUseCase } from '@application/usecases/auth/logout.usecase';
 
 @Injectable({
   providedIn: 'root'

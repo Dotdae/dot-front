@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from "../../components/footer/footer.component";
-import { AuthService } from 'src/app/application/services/auth.service';
+import { AuthService } from '@infrastructure/services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({

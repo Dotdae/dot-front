@@ -6,7 +6,10 @@
     "baseUrl": "./",
     "paths": {
       "@domain/*": ["src/app/domain/*"],
-      "@components/*": ["src/app/presentation/components"]
+      "@application/*": ["src/app/application/*"],
+      "@infrastructure/*": ["src/app/infrastructure/*"],
+      "@presentation/*": ["src/app/presentation/*"],
+      "@components/*": ["src/app/presentation/components/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

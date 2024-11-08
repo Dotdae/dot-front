@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationsComponent } from "../../../../components/notifications/notifications.component";
-import { AuthRepositoryImplementation } from '@domain/repositories/auth/auth.repository.implementation';
+import { AuthRepositoryImplementation } from '@infrastructure/auth/auth.repository.implementation';
+
 @Component({
   selector: 'app-recent',
   standalone: true,
-  imports: [NotificationsComponent],
+  imports: [],
   templateUrl: './recent.component.html',
   styleUrl: './recent.component.css'
 })

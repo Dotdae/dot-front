@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { GetAllEmployeesUseCase } from '@domain/usecases/employee/get-all-employees.usecase';
+import { GetAllEmployeesUseCase } from '@application/usecases/employee/get-all-employees.usecase';
 import { Employee } from '@domain/models/employee.model';
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
+  imports: [],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css'
 })

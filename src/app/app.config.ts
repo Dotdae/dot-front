@@ -6,13 +6,13 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
 // Employees.
 
-import { EMPLOYEE_REPOSITORY_TOKEN } from './domain/repositories/employee/employee-respository.token';
-import { EmployeeRepositoryImplementation } from './domain/repositories/employee/employee.repository.implementation';
+import { EMPLOYEE_REPOSITORY_TOKEN } from '@domain/repositories/employee/employee-respository.token';
+import { EmployeeRepositoryImplementation } from '@infrastructure/employee/employee.repository.implementation';
 
 // Auth.
 
 import { AUTH_REPOSITORY_TOKEN } from '@domain/repositories/auth/auth.repository.token';
-import { AuthRepositoryImplementation } from '@domain/repositories/auth/auth.repository.implementation';
+import { AuthRepositoryImplementation } from '@infrastructure/auth/auth.repository.implementation';
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -1,7 +1,7 @@
 import { Injectable, Pipe } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { AuthRepository } from './auth.repository';
+import { AuthRepository } from '@domain/repositories/auth/auth.repository';
 import { Router } from '@angular/router';
 
 @Injectable({

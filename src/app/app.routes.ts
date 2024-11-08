@@ -13,7 +13,7 @@ import { AddComponent } from './presentation/pages/dashboard/components/employee
 
 // Guards.
 
-import { AuthGuard } from './application/guards/auth.guard';
+import { AuthGuard } from '@presentation/pages/login/auth.guard';
 
 export const routes: Routes = [
 
