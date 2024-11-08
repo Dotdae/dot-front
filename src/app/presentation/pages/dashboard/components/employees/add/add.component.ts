@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateEmployeeUseCase } from '../../../../../../domain/usecases/employee/create-employee.usecase';
 import { Employee } from '../../../../../../domain/models/employee.model';
 @Component({
@@ -20,13 +21,15 @@ export class AddComponent {
   }];
 
   nombre: string = '';
+  email: string = '';
   edad: number = 0;
   direccion: string = '';
   salario: number = 0;
   rol: string = "";
 
   constructor(
-    private createEmployeeUseCase: CreateEmployeeUseCase
+    private createEmployeeUseCase: CreateEmployeeUseCase,
+    private router: Router
   ){}
 
 
@@ -34,6 +37,7 @@ export class AddComponent {
 
     const employee: Employee = new Employee (
       this.nombre,
+      this.email,
       this.edad,
       this.direccion,
       this.salario,
@@ -42,7 +46,8 @@ export class AddComponent {
 
     this.createEmployeeUseCase.execute(employee).subscribe({
       next: () => {
-        console.log('Empleado creado!');
+        this.router.navigate(['/dashboard/empleados']);
+
       },
       error: () => {
 
