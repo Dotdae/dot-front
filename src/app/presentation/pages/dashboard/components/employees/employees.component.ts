@@ -46,8 +46,7 @@ export class EmployeesComponent implements OnInit {
 
     this.deleteEmployeeUseCase.execute(id).subscribe({
      next: () => {
-      console.log('Empleado eliminado')
-      window.location.reload();
+      this.loadEmployees();
      },
      error: (err) => {
       console.log(err);
