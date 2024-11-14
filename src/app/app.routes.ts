@@ -14,6 +14,7 @@ import { AddComponent } from './presentation/pages/dashboard/components/employee
 // Guards.
 
 import { AuthGuard } from '@presentation/pages/login/auth.guard';
+import { CreateTaskComponent } from '@presentation/pages/dashboard/components/employees/create-task/create-task.component';
 
 export const routes: Routes = [
 
@@ -35,6 +36,9 @@ export const routes: Routes = [
       },
       {
         path: 'agregar', component: AddComponent
+      },
+      {
+        path: 'crear-tarea', component: CreateTaskComponent
       },
       {
         path: 'mensajes', component: MessagesComponent
