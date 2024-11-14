@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthRepositoryImplementation } from '@infrastructure/auth/auth.repository.implementation';
-import { Employee } from '@domain/models/employee.model';
 
 @Component({
   selector: 'app-recent',

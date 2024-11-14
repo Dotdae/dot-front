@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { GetAllEmployeesUseCase } from '@application/usecases/employee/get-all-employees.usecase';
+import { DeleteEmployeeUseCase } from '@application/usecases/employee/delete-employee.usecase';
 import { Employee } from '@domain/models/employee.model';
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css'
 })
@@ -15,7 +17,10 @@ export class EmployeesComponent implements OnInit {
   employeeNumber: number = 0;
   error: string = '';
 
-  constructor(private getAllEmployesUseCase: GetAllEmployeesUseCase){}
+  constructor(
+    private getAllEmployesUseCase: GetAllEmployeesUseCase,
+    private deleteEmployeeUseCase: DeleteEmployeeUseCase
+  ){}
 
   ngOnInit(): void{
 
@@ -34,6 +39,20 @@ export class EmployeesComponent implements OnInit {
         this.error = 'Error al cargar empleados: ' + err.message;
       }
     });
+
+  }
+
+  deleteEmployee(id: number): void{
+
+    this.deleteEmployeeUseCase.execute(id).subscribe({
+     next: () => {
+      console.log('Empleado eliminado')
+      window.location.reload();
+     },
+     error: (err) => {
+      console.log(err);
+     }
+    })
 
   }
 
