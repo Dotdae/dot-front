@@ -1,0 +1,77 @@
+<div class="flex h-screen">
+  <div class="container mx-auto mt-24 p-4">
+    <div class="flex items-center justify-center">
+      <div class="bg-[#16324F] rounded-lg shadow-lg p-8 w-full max-w-6xl h-[43em]">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-3xl font-semibold text-white flex items-center font-poppins">
+            Crear nueva tarea
+          </h2>
+        </div>
+        <!-- Formulario -->
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Nombre de la tarea -->
+            <div>
+              <label for="title" class="block text-xl font-medium text-white mb-1">Nombre de la tarea</label>
+              <input [(ngModel)]="titulo" type="text" id="title" name="title" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50" placeholder="Escribe el nombre de la tarea">
+            </div>
+            <!-- Categoría -->
+            <div>
+              <label for="roles" class="block text-xl font-medium text-white mb-1">Categoria</label>
+              <select class="w-full px-12 py-4 border border-[#18435A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3E92CC]" name="category" [(ngModel)]="categoria">
+                @for (categoria of cat; track categoria.id) {
+
+                  <option [ngValue]="categoria.name">
+                    {{ categoria.name }}
+                  </option>
+                }
+              </select>
+            </div>
+            <!-- Trabajador -->
+            <div>
+              <label for="worker" class="block text-xl font-medium text-white mb-1">Trabajador</label>
+              <input type="text" id="engaged-people" value="{{ employeeName }}" name="worker" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50" placeholder="Nombre del trabajador">
+            </div>
+            <!-- Prioridad -->
+            <div>
+              <label for="roles" class="block text-xl font-medium text-white mb-1">Prioridad</label>
+              <select class="w-full px-12 py-4 border border-[#18435A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3E92CC]" name="category" [(ngModel)]="prioridad">
+                @for (prioridad of prio; track prioridad.id) {
+
+                  <option [ngValue]="prioridad.name">
+                    {{ prioridad.name }}
+                  </option>
+                }
+              </select>
+            </div>
+            <!-- Fecha límite -->
+            <div>
+              <label for="due-date" class="block text-xl font-medium text-white mb-1">Fecha límite</label>
+              <input [(ngModel)]="fecha_limite" type="date" id="due-date" name="due-date" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50">
+            </div>
+            <!-- Hora -->
+            <div>
+              <label for="time" class="block text-xl font-medium text-white mb-1">Hora</label>
+              <input [(ngModel)]="hora_limite" type="time" id="time" name="time" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50">
+            </div>
+            <!-- Descripción -->
+            <div class="col-span-2">
+              <label for="description" class="block text-xl font-medium text-white mb-4">Descripción</label>
+              <textarea [(ngModel)]="descripcion" id="description" name="description" rows="4" class="block w-full p-3 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50" placeholder="Escribe una descripción"></textarea>
+              <p class="mt-1 text-xs text-gray-300">Notas adicionales</p>
+            </div>
+            <!-- Botones -->
+            <div class="col-span-2 flex justify-end mt-4">
+              <button type="button" class="px-4 py-2 text-sm font-medium text-white bg-[#3E92CC] rounded-md shadow-sm hover:bg-[#2A628F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3E92CC]">
+                Cancelar
+              </button>
+              <button (click)="onsubmitTask()" type="submit" class="ml-3 px-4 py-2 text-sm font-medium text-white bg-[#3E92CC] border border-transparent rounded-md shadow-sm hover:bg-[#2A628F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3E92CC]">
+                Crear
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

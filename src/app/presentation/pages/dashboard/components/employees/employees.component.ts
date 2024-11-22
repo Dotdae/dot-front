@@ -15,6 +15,8 @@ export class EmployeesComponent implements OnInit {
 
   employees: Employee[] = []
   employeeNumber: number = 0;
+  femNumber: number = 0;
+  menNumber: number = 0;
   error: string = '';
 
   constructor(
@@ -34,6 +36,17 @@ export class EmployeesComponent implements OnInit {
       next: (data: Employee[]) => {
         this.employees = data;
         this.employeeNumber = this.employees.length;
+        this.employees.forEach(employee => {
+
+          if(employee.sexo === 'Femenino'){
+            this.femNumber++;
+          }
+          else if(employee.sexo === 'Masculino'){
+            this.menNumber++;
+          }
+
+        });
+
       },
       error: (err) => {
         this.error = 'Error al cargar empleados: ' + err.message;

@@ -38,7 +38,7 @@ export const routes: Routes = [
         path: 'agregar', component: AddComponent
       },
       {
-        path: 'crear-tarea', component: CreateTaskComponent
+        path: 'crear-tarea/:id', component: CreateTaskComponent
       },
       {
         path: 'mensajes', component: MessagesComponent

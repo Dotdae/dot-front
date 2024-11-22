@@ -2,6 +2,7 @@ export class Employee{
 
   constructor(
     public nombre: string,
+    public sexo: 'Masculino' | 'Femenino',
     public email: string,
     public edad: number,
     public direccion: string,

@@ -20,7 +20,17 @@ export class AddComponent {
     name: "Empleado",
   }];
 
+  sexos = [{
+    id: 1,
+    name: "Masculino",
+  },{
+    id: 2,
+    name: "Femenino",
+  }];
+
+
   nombre: string = '';
+  sexo: string = '';
   email: string = '';
   edad: number = 0;
   direccion: string = '';
@@ -37,7 +47,8 @@ export class AddComponent {
 
     const employee: Employee = new Employee (
       this.nombre,
-      this.email,
+      this.sexo as 'Masculino' | 'Femenino',
+      this.email ,
       this.edad,
       this.direccion,
       this.salario,

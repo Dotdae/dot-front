@@ -5,7 +5,7 @@
       <div class="p-10">
           <h1 class="text-2xl font-bold mb-6 text-center">Empleados</h1>
           <!-- Employee Stats -->
-          <div class="grid grid-cols-4 gap-4 mb-6">
+          <div class="grid grid-cols-3 gap-4 mb-6 ">
               <div class="bg-purple-50 p-4 rounded-lg shadow">
                   <div class="flex items-center">
                       <i class="icon icon-users text-blue-500 w-8 h-8"></i>
@@ -15,21 +15,12 @@
                       </div>
                   </div>
               </div>
-              <div class="bg-yellow-50 p-4 rounded-lg shadow">
-                  <div class="flex items-center">
-                      <i class="icon icon-user-plus text-green-500 w-8 h-8"></i>
-                      <div class="ml-4">
-                          <p class="text-sm text-gray-500">Empleados nuevos</p>
-                          <p class="text-xl font-semibold">15</p>
-                      </div>
-                  </div>
-              </div>
               <div class="bg-blue-50 p-4 rounded-lg shadow">
                   <div class="flex items-center">
                       <i class="icon icon-user text-blue-500 w-8 h-8"></i>
                       <div class="ml-4">
                           <p class="text-sm text-gray-500">Hombres</p>
-                          <p class="text-xl font-semibold">65</p>
+                          <p class="text-xl font-semibold">{{ menNumber }}</p>
                       </div>
                   </div>
               </div>
@@ -38,7 +29,7 @@
                       <i class="icon icon-user text-pink-500 w-8 h-8"></i>
                       <div class="ml-4">
                           <p class="text-sm text-gray-500">Mujeres</p>
-                          <p class="text-xl font-semibold">20</p>
+                          <p class="text-xl font-semibold">{{ femNumber }}</p>
                       </div>
                   </div>
               </div>
@@ -68,7 +59,7 @@
                         <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
                           <div class="flex flex-row justify-between">
                             <!--Add-->
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+                            <svg routerLink="/dashboard/crear-tarea/{{employee.id}}" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
                             <!--Delete-->
                             <svg (click)="deleteEmployee(employee.id!)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m456-320 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 160q-19 0-36-8.5T296-192L80-480l216-288q11-15 28-23.5t36-8.5h440q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H360ZM180-480l180 240h440v-480H360L180-480Zm400 0Z"/></svg>
                           </div>

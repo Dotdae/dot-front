@@ -14,6 +14,11 @@ import { EmployeeRepositoryImplementation } from '@infrastructure/employee/emplo
 import { AUTH_REPOSITORY_TOKEN } from '@domain/repositories/auth/auth.repository.token';
 import { AuthRepositoryImplementation } from '@infrastructure/auth/auth.repository.implementation';
 
+// Task.
+
+import { TASK_REPOSITORY_TOKEN } from '@domain/repositories/task/task.respository.token';
+import { TaskRepositoryImplementation } from '@infrastructure/task/task.repository.implementation';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withFetch()), provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
@@ -21,7 +26,8 @@ export const appConfig: ApplicationConfig = {
     // Clean architecture providers.
 
     { provide: EMPLOYEE_REPOSITORY_TOKEN, useClass: EmployeeRepositoryImplementation },
-    { provide: AUTH_REPOSITORY_TOKEN, useClass: AuthRepositoryImplementation }
+    { provide: AUTH_REPOSITORY_TOKEN, useClass: AuthRepositoryImplementation },
+    { provide: TASK_REPOSITORY_TOKEN, useClass: TaskRepositoryImplementation}
 
   ]
 };
