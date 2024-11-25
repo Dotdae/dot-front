@@ -28,6 +28,7 @@ export class AuthRepositoryImplementation implements AuthRepository {
   }
 
   logout(): void {
+    this.http.post<any>(`${this.apiUrl}/logout`, null);
     localStorage.removeItem(this.employeeKey);
     this.router.navigate(['/login']);
   }
