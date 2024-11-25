@@ -55,7 +55,7 @@
               <div class="p-4 max-h-[40em] overflow-y-auto custom-scroll">
                   <div class="grid grid-cols-5 gap-6">
                       <!-- Employee Card (repeat for each employee) -->
-                       @for (employee of employees; track employee.id) {
+                       @for (employee of getPagedEmployees(); track employee.id) {
                         <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
                           <div class="flex flex-row justify-between">
                             <!--Add-->
@@ -79,6 +79,31 @@
                         </div>
                        }
                   </div>
+              </div>
+               <!-- Paginación -->
+              <div class="flex justify-center mt-6">
+                <!-- Botón "Anterior" -->
+                <button
+                  (click)="changePage(currentPage - 1)"
+                  [disabled]="currentPage === 1"
+                  class="px-4 py-2 bg-gray-600 text-white rounded-l-md hover:bg-gray-500 transition-all duration-200 disabled:bg-gray-300"
+                >
+                  Anterior
+                </button>
+
+                <!-- Páginas -->
+                <span class="px-4 py-2 text-sm text-gray-700 flex items-center justify-center">
+                  Página {{ currentPage }} de {{ totalPages }}
+                </span>
+
+                <!-- Botón "Siguiente" -->
+                <button
+                  (click)="changePage(currentPage + 1)"
+                  [disabled]="currentPage === totalPages"
+                  class="px-4 py-2 bg-gray-600 text-white rounded-r-md hover:bg-gray-500 transition-all duration-200 disabled:bg-gray-300"
+                >
+                  Siguiente
+                </button>
               </div>
           </div>
       </div>

@@ -19,6 +19,12 @@ export class EmployeesComponent implements OnInit {
   menNumber: number = 0;
   error: string = '';
 
+  // Paginación.
+
+  currentPage: number = 1;
+  itemsPerPage:  number = 10; // Solo mostaré tarjetas de 5x2.
+  totalPages: number = 1;
+
   constructor(
     private getAllEmployesUseCase: GetAllEmployeesUseCase,
     private deleteEmployeeUseCase: DeleteEmployeeUseCase
@@ -36,16 +42,11 @@ export class EmployeesComponent implements OnInit {
       next: (data: Employee[]) => {
         this.employees = data;
         this.employeeNumber = this.employees.length;
-        this.employees.forEach(employee => {
+        this.femNumber = this.employees.filter(emp => emp.sexo === 'Femenino').length;
+        this.menNumber = this.employees.filter(emp => emp.sexo === 'Masculino').length;
 
-          if(employee.sexo === 'Femenino'){
-            this.femNumber++;
-          }
-          else if(employee.sexo === 'Masculino'){
-            this.menNumber++;
-          }
-
-        });
+        // Calcular el total de páginas.
+        this.totalPages = Math.ceil(this.employeeNumber / this.itemsPerPage);
 
       },
       error: (err) => {
@@ -54,6 +55,27 @@ export class EmployeesComponent implements OnInit {
     });
 
   }
+
+  // Función para cambiar de página.
+
+  changePage(page: number): void{
+
+    if(page < 1 || page > this.totalPages){
+      return;
+    }
+
+    this.currentPage = page;
+    this.loadEmployees(); // Vuelve a cargar los empleados de la página seleccionada.
+
+  }
+
+  // Obtener los empleados para la página actual.
+
+  getPagedEmployees(): Employee[]{
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.employees.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
 
   deleteEmployee(id: number): void{
 
