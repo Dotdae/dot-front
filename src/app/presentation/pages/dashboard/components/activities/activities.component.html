@@ -1,22 +1,9 @@
-<div class="flex gap-4 p-4 overflow-x-auto">
-  <div *ngFor="let column of cards" class="column w-72">
-    <div class="p-4 rounded-lg shadow-md" [ngClass]="column.color">
-      <h2 class="text-lg font-bold">{{ column.title }}</h2>
+<div class="h-screen bg-blue-200">
+  <div class="flex justify-between">
+    <div>
+      <h1>Tareas asignadas</h1>
     </div>
-    <div class="task-list p-2 bg-gray-100 rounded-md space-y-2 min-h-[200px]">
-      <div
-        *ngFor="let task of column.tasks"
-        class="task p-4 bg-white rounded shadow-md cursor-move"
-        [id]="task.id"
-      >
-        <h3 class="text-sm font-semibold">{{ task.title }}</h3>
-        <div class="h-2 bg-gray-200 rounded mt-2">
-          <div
-            class="h-2 rounded bg-blue-600"
-            [style.width]="task.progress + '%'"
-          ></div>
-        </div>
-      </div>
-    </div>
+    <div>En progreso</div>
+    <div>Completada</div>
   </div>
 </div>
