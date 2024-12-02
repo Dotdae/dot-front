@@ -25,6 +25,47 @@ export class ActivitiesComponent implements AfterViewInit{
           descripcion: 'Esta es la descripción de la tarea',
           progress: 45
         },
+        {
+          id: 1,
+          title: 'Some task',
+          categoria: 'Reparación',
+          prioridad: 'Alta',
+          descripcion: 'Esta es la descripción de la tarea',
+          progress: 45
+        },
+        {
+          id: 1,
+          title: 'Some task',
+          categoria: 'Reparación',
+          prioridad: 'Alta',
+          descripcion: 'Esta es la descripción de la tarea',
+          progress: 45
+        },
+        {
+          id: 1,
+          title: 'Some task',
+          categoria: 'Reparación',
+          prioridad: 'Alta',
+          descripcion: 'Esta es la descripción de la tarea',
+          progress: 45
+        },
+        {
+          id: 1,
+          title: 'Some task',
+          categoria: 'Reparación',
+          prioridad: 'Alta',
+          descripcion: 'Esta es la descripción de la tarea',
+          progress: 45
+        },
+        {
+          id: 1,
+          title: 'Some task',
+          categoria: 'Reparación',
+          prioridad: 'Alta',
+          descripcion: 'Esta es la descripción de la tarea',
+          progress: 45
+        },
+
       ]
     },
     {
