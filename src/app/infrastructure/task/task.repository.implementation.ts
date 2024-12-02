@@ -19,4 +19,8 @@ export class TaskRepositoryImplementation implements TaskRepository{
     return this.http.post<void>(`${this.apiUrl}/task/${employeeId}`, { task })
   }
 
+  getEmployeeTasks(employeeId: number): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.apiUrl}/task/${employeeId}`);
+  }
+
 }

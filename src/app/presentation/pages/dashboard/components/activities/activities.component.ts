@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import interact from 'interactjs';
 import { CardComponent } from './components/card/card.component';
+import { GetEmployeeTasksUseCase } from '@application/usecases/task/get-employee-tasks.usecase';
 
 @Component({
   selector: 'app-activities',
@@ -27,7 +28,7 @@ export class ActivitiesComponent implements AfterViewInit{
           progress: 45
         },
         {
-          id: 1,
+          id: 2,
           title: 'Some task',
           categoria: 'Reparación',
           prioridad: 'Alta',
@@ -35,7 +36,7 @@ export class ActivitiesComponent implements AfterViewInit{
           progress: 45
         },
         {
-          id: 1,
+          id: 3,
           title: 'Some task',
           categoria: 'Reparación',
           prioridad: 'Alta',
@@ -43,7 +44,7 @@ export class ActivitiesComponent implements AfterViewInit{
           progress: 45
         },
         {
-          id: 1,
+          id: 4,
           title: 'Some task',
           categoria: 'Reparación',
           prioridad: 'Alta',
@@ -51,7 +52,7 @@ export class ActivitiesComponent implements AfterViewInit{
           progress: 45
         },
         {
-          id: 1,
+          id: 5,
           title: 'Some task',
           categoria: 'Reparación',
           prioridad: 'Alta',
@@ -59,7 +60,7 @@ export class ActivitiesComponent implements AfterViewInit{
           progress: 45
         },
         {
-          id: 1,
+          id: 6,
           title: 'Some task',
           categoria: 'Reparación',
           prioridad: 'Alta',
@@ -100,6 +101,21 @@ export class ActivitiesComponent implements AfterViewInit{
       ]
     }
   ]
+
+  constructor(private getEmployeeTask: GetEmployeeTasksUseCase) { }
+
+  ngOnInit(): void {
+    // Obtener las tareas del backend
+    this.getEmployeeTask.execute(16).subscribe({
+      next: (tasks) => {
+        console.log(tasks)
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
 
   ngAfterViewInit(): void {
     const componentInstance = this;  // Guardamos el valor de `this`
