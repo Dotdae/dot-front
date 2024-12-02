@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
 import interact from 'interactjs';
+import { CardComponent } from './components/card/card.component';
 
 @Component({
   selector: 'app-activities',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './activities.component.html',
   styleUrl: './activities.component.css'
 })
