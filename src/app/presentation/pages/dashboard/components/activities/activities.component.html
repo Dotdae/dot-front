@@ -1,39 +1,67 @@
-<div class="flex flex-col h-screen">
-  <!-- Encabezado -->
-  <header class="flex items-center justify-between p-4 bg-white shadow-md">
-    <h1 class="text-xl font-bold">Task Board</h1>
-  </header>
-  <!-- Tablero -->
-  <main class="flex-grow p-6 bg-gray-100">
-    <div class="grid grid-cols-3 gap-6">
-      <!-- Iterar sobre las columnas -->
-       @for (card of cards; track card.id) {
-        <div
-        class="column bg-white rounded-lg shadow p-4 overflow-y-auto overflow-x-hidden custom-scroll max-h-[calc(100vh-200px)]"
-        [attr.data-id]="card.id"
-        >
-          <!-- Título de la columna -->
-          <h2 class="text-lg font-semibold mb-3">{{ card.title }}</h2>
-          <!-- Lista de tareas -->
-          <div class="task-list space-y-4" [attr.data-column-id]="card.id">
-            <!-- Iterar sobre las tareas -->
-            @for (task of card.tasks; track task.id) {
-              <div
-              class="task p-4 rounded-lg shadow-lg cursor-move transform transition-transform duration-250 ease-in-out select-none"
-              [attr.data-task-id]="task.id"
-              [ngStyle]="{'background-color': card.color}"
-              >
-                <app-card
-                [titulo]="task.title"
-                [categoria]="task.categoria"
-                [prioridad]="task.prioridad"
-                [descripcion]="task.descripcion"
-                />
-              </div>
-            }
+<div class="flex gap-4 p-4">
+  <!-- Columna: Tareas Pendientes -->
+  <div id="pending" class="kanban-column bg-gray-100 p-4 rounded-lg shadow-md w-1/3">
+    <h2 class="text-lg font-semibold mb-4 text-gray-700">Tareas Pendientes</h2>
+    <div id="pending-tasks" class="space-y-4">
+      @for (task of tasks; track task.id) {
+        @if (task.status === 'Pendiente') {
+          <div
+            class="kanban-task bg-white p-3 rounded shadow-md cursor-pointer border"
+            [attr.data-id]="task.id"
+            draggable="true"
+          >
+            <p class="font-medium text-gray-800">{{ task.titulo }}</p>
+            <p class="text-sm text-gray-600">{{ task.descripcion }}</p>
+            <p class="text-sm text-gray-500">Prioridad: {{ task.prioridad }}</p>
+            <p class="text-sm text-gray-500">Límite: {{ task.fecha_limite | date:'shortDate' }} {{ task.hora_limite }}</p>
+            <p class="text-sm text-gray-500">Status: {{ task.status }}</p>
           </div>
-        </div>
-       }
+        }
+      }
     </div>
-  </main>
+  </div>
+
+  <!-- Columna: Tareas en Progreso -->
+  <div id="in-progress" class="kanban-column bg-yellow-100 p-4 rounded-lg shadow-md w-1/3">
+    <h2 class="text-lg font-semibold mb-4 text-yellow-700">Tareas en Progreso</h2>
+    <div id="in-progress-tasks" class="space-y-4">
+      @for (task of tasks; track task.id) {
+        @if (task.status === 'En proceso') {
+          <div
+            class="kanban-task bg-white p-3 rounded shadow-md cursor-pointer border"
+            [attr.data-id]="task.id"
+            draggable="true"
+          >
+            <p class="font-medium text-gray-800">{{ task.titulo }}</p>
+            <p class="text-sm text-gray-600">{{ task.descripcion }}</p>
+            <p class="text-sm text-gray-500">Prioridad: {{ task.prioridad }}</p>
+            <p class="text-sm text-gray-500">Límite: {{ task.fecha_limite | date:'shortDate' }} {{ task.hora_limite }}</p>
+            <p class="text-sm text-gray-500">Status: {{ task.status }}</p>
+          </div>
+        }
+      }
+    </div>
+  </div>
+
+  <!-- Columna: Tareas Completadas -->
+  <div id="completed" class="kanban-column bg-green-100 p-4 rounded-lg shadow-md w-1/3">
+    <h2 class="text-lg font-semibold mb-4 text-green-700">Tareas Completadas</h2>
+    <div id="completed-tasks" class="space-y-4">
+      @for (task of tasks; track task.id) {
+        @if (task.status === 'Completada') {
+          <div
+            class="kanban-task bg-white p-3 rounded shadow-md cursor-pointer border"
+            [attr.data-id]="task.id"
+            draggable="true"
+          >
+            <p class="font-medium text-gray-800">{{ task.titulo }}</p>
+            <p class="text-sm text-gray-600">{{ task.descripcion }}</p>
+            <p class="text-sm text-gray-500">Prioridad: {{ task.prioridad }}</p>
+            <p class="text-sm text-gray-500">Límite: {{ task.fecha_limite | date:'shortDate' }} {{ task.hora_limite }}</p>
+            <p class="text-sm text-gray-500">Status: {{ task.status }}</p>
+          </div>
+        }
+      }
+    </div>
+  </div>
 </div>

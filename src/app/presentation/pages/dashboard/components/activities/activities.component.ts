@@ -1,174 +1,100 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import interact from 'interactjs';
 import { CardComponent } from './components/card/card.component';
 import { GetEmployeeTasksUseCase } from '@application/usecases/task/get-employee-tasks.usecase';
+import { updateTaskStatusUseCase } from '@application/usecases/task/update-task-status.usecase';
+import { Task } from '@domain/models/task.model';
 
 @Component({
   selector: 'app-activities',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule],
   templateUrl: './activities.component.html',
   styleUrl: './activities.component.css'
 })
-export class ActivitiesComponent implements AfterViewInit{
+export class ActivitiesComponent implements OnInit{
 
-  cards = [
-    {
-      id: 'todo',
-      title: 'Tareas asignadas',
-      color: '#D0DCF8',
-      tasks: [
-        {
-          id: 1,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
-        {
-          id: 2,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
-        {
-          id: 3,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
-        {
-          id: 4,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
-        {
-          id: 5,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
-        {
-          id: 6,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
+  tasks: Task[] = [];
 
-      ]
-    },
-    {
-      id: 'in-progress',
-      title: 'En progreso',
-      color: '#F9E3CE',
-      tasks: [
-        {
-          id: 1,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
-      ]
-    },
-    {
-      id: 'done',
-      title: 'Terminadas',
-      color: '#C4F4E6',
-      tasks: [
-        {
-          id: 1,
-          title: 'Some task',
-          categoria: 'Reparación',
-          prioridad: 'Alta',
-          descripcion: 'Esta es la descripción de la tarea',
-          progress: 45
-        },
-      ]
-    }
-  ]
-
-  constructor(private getEmployeeTask: GetEmployeeTasksUseCase) { }
+  constructor(
+    private getEmployeeTask: GetEmployeeTasksUseCase,
+    private updateStatusTask: updateTaskStatusUseCase
+  ){}
 
   ngOnInit(): void {
-    // Obtener las tareas del backend
+
     this.getEmployeeTask.execute(16).subscribe({
-      next: (tasks) => {
-        console.log(tasks)
+      next: (tasks ) => {
+
+        this.tasks = tasks.map(task => ({
+            ...task,
+        }));
+
       },
-      error: (err) => {
-        console.error(err);
+      error: (error) => {
+
+        console.error(error)
+
       }
-    });
+    })
+
+    this.initializeDragAndDrop();
   }
 
-
-  ngAfterViewInit(): void {
-    const componentInstance = this;  // Guardamos el valor de `this`
-
-    interact('.task')
-      .draggable({
-        listeners: {
-          move(event) {
-            const target = event.target;
-            const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-            const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-            target.style.transform = `translate(${x}px, ${y}px)`;
-            target.setAttribute('data-x', x.toString());
-            target.setAttribute('data-y', y.toString());
-          },
-        },
-      })
-      .on('dragend', (event) => {
+  initializeDragAndDrop() {
+  interact('.kanban-task').draggable({
+    listeners: {
+      move(event) {
         const target = event.target;
+        const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+        const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
-        // Reinicia las coordenadas después de soltar
-        target.style.transform = '';
-        target.removeAttribute('data-x');
-        target.removeAttribute('data-y');
-      });
-
-    interact('.column').dropzone({
-      accept: '.task',
-      ondrop(event) {
-        const task = event.relatedTarget;  // Elemento arrastrado
-        const targetColumn = event.target.querySelector('.task-list');
-
-        if (targetColumn) {
-          // Cambiar el color de la tarjeta cuando se coloca en un nuevo contenedor
-          task.style.transition = 'transform 0.3s ease-in-out'; // Aplica transición suave
-          targetColumn.appendChild(task);
-
-          // Cambiar el color de la tarjeta según el contenedor de destino
-          const columnId = event.target.getAttribute('data-id');
-          const column = componentInstance.cards.find((card) => card.id === columnId);  // Usamos `componentInstance` para acceder a `this.cards`
-          if (column) {
-            task.style.backgroundColor = column.color; // Cambia el color de la tarjeta al color de la columna
-          }
-
-          // Limpia las transformaciones después de que termine la animación
-          setTimeout(() => {
-            task.style.transition = '';
-            task.style.transform = '';
-          }, 300); // Espera a que termine la animación
-        }
+        target.style.transform = `translate(${x}px, ${y}px)`;
+        target.setAttribute('data-x', x.toString());
+        target.setAttribute('data-y', y.toString());
       },
-    });
+      end(event) {
+        event.target.style.transform = '';
+        event.target.removeAttribute('data-x');
+        event.target.removeAttribute('data-y');
+      },
+    },
+  });
+
+  interact('.kanban-column').dropzone({
+    accept: '.kanban-task',
+    ondrop: (event) => {
+      const taskId = event.relatedTarget.getAttribute('data-id');
+      const newStatus: 'Pendiente' | 'En proceso' | 'Completada' =
+        event.target.id === 'pending'
+          ? 'Pendiente'
+          : event.target.id === 'in-progress'
+          ? 'En proceso' // Ajustado para coincidir con el modelo
+          : 'Completada';
+
+      this.updateTaskStatus(Number(taskId), newStatus);
+
+      // Update status on backend.
+
+      this.updateStatusTask.execute(Number(taskId), newStatus).subscribe({
+        next: (updatedTask) => {
+          console.log('Task updated!')
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      })
+
+    },
+  });
+}
+
+updateTaskStatus(taskId: number, newStatus: 'Pendiente' | 'En proceso' | 'Completada') {
+  const task = this.tasks.find((t) => t.id === taskId);
+  if (task) {
+    task.status = newStatus;
   }
+}
 
 }
