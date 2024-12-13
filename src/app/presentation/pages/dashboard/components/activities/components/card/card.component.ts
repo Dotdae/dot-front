@@ -9,9 +9,13 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
 
+  @Input() id!: any;
   @Input() titulo!: string;
   @Input() categoria!: string;
   @Input() prioridad!: string;
+  @Input() status!: string;
+  @Input() limite!: any;
+  @Input() hora!: string;
   @Input() descripcion!: string;
 
 }

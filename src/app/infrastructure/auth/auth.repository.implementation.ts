@@ -1,9 +1,10 @@
-import { Injectable, Pipe } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { AuthRepository } from '@domain/repositories/auth/auth.repository';
 import { Router } from '@angular/router';
 import { Employee } from '@domain/models/employee.model';
+import { ChatService } from '@infrastructure/services/chat.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthRepositoryImplementation implements AuthRepository {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private chatService: ChatService
   ){}
 
   login(numeroEmpleado: number, empleadoPassword: string): Observable<Employee>{
@@ -25,9 +27,16 @@ export class AuthRepositoryImplementation implements AuthRepository {
     }).pipe(
       tap( employee => {
         localStorage.setItem(this.employeeKey, JSON.stringify(employee));
+
+        this.chatService.connect(employee.nombre);
       })
 
     )
+  }
+
+  // Reconectar socket
+  connectSocket(userName: string): void {
+    this.chatService.connect(userName);
   }
 
   logout(): void {
@@ -36,6 +45,8 @@ export class AuthRepositoryImplementation implements AuthRepository {
       next: () => {
         localStorage.removeItem(this.employeeKey); // Cambia según el nombre de tu clave
         sessionStorage.clear(); // Limpia todo lo almacenado en sessionStorage
+        // Desconectar el socket
+        this.chatService.disconnect();
         this.router.navigate(['/login']);
       },
       error: (err) => {

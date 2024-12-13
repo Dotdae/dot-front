@@ -9,7 +9,7 @@ import { Task } from '@domain/models/task.model';
 @Component({
   selector: 'app-activities',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './activities.component.html',
   styleUrl: './activities.component.css'
 })

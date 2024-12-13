@@ -1,13 +1,7 @@
- <!--Title-->
- <div class="flex items-center justify-center gap-2 mb-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m438-240 226-226-58-58-169 169-84-84-57 57 142 142ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>
-  <h3 class="text-lg font-medium text-center text-gray-800">
-    {{ titulo}}
-  </h3>
-</div>
-<!--Category-->
-<div class="flex justify-between items-center gap-2 mb-2">
-  <div class="w-[7em] h-[2em] flex justify-center items-center p-1 bg-blue-500 text-white rounded-lg text-sm font-medium shadow-inner">
+ <!--Icons section-->
+<div class="flex items-start gap-8 mb-2">
+  <!--Category-->
+  <div class="h-[2em] flex justify-center items-center p-1 bg-blue-500 text-white rounded-lg text-sm font-medium shadow-inner">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-4 w-4 text-white"
@@ -25,7 +19,7 @@
     {{ categoria }}
   </div>
   <!--Priority-->
-  <div class="w-[7em] h-[2em] flex justify-center items-center p-1 bg-red-500 text-white rounded-lg text-sm font-medium shadow-inner">
+  <div class="w-[5em] h-[2em] flex justify-center items-center p-1 bg-red-500 text-white rounded-lg text-sm font-medium shadow-inner">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-4 w-4 text-white"
@@ -43,10 +37,45 @@
     {{ prioridad }}
   </div>
 </div>
+<!--Title-->
+<div class="flex items-center gap-2 m-4">
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m640-480 80 80v80H520v240l-40 40-40-40v-240H240v-80l80-80v-280h-40v-80h400v80h-40v280Zm-286 80h252l-46-46v-314H400v314l-46 46Zm126 0Z"/></svg>
+  <h3 class="text-lg font-medium text-gray-800">
+    {{ titulo}}
+  </h3>
+</div>
 <!--Description-->
-<div class="flex items-center justify-center gap-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>
+<div class="flex items-center gap-2 m-4">
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-520v-320h320v320H120Zm0 400v-320h320v320H120Zm400-400v-320h320v320H520Zm0 400v-320h320v320H520ZM200-600h160v-160H200v160Zm400 0h160v-160H600v160Zm0 400h160v-160H600v160Zm-400 0h160v-160H200v160Zm400-400Zm0 240Zm-240 0Zm0-240Z"/></svg>
   <p class="text-sm text-center text-gray-700">
     {{ descripcion }}
   </p>
 </div>
+ <!--Division-->
+<hr class="border-gray-500 border-2 my-2"/>
+<!--Bottom section-->
+<div class="flex justify-between">
+  <!--Task id-->
+  <div class="flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#000000"><path d="m240-160 40-160H120l20-80h160l40-160H180l20-80h160l40-160h80l-40 160h160l40-160h80l-40 160h160l-20 80H660l-40 160h160l-20 80H600l-40 160h-80l40-160H360l-40 160h-80Zm140-240h160l40-160H420l-40 160Z"/></svg>
+    <p class="text-sm text-center font-bold text-gray-700">
+      {{ id }}
+    </p>
+  </div>
+  <!--Status-->
+  <div class="flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-420q25 0 42.5-17.5T340-480q0-25-17.5-42.5T280-540q-25 0-42.5 17.5T220-480q0 25 17.5 42.5T280-420Zm200 0q25 0 42.5-17.5T540-480q0-25-17.5-42.5T480-540q-25 0-42.5 17.5T420-480q0 25 17.5 42.5T480-420Zm200 0q25 0 42.5-17.5T740-480q0-25-17.5-42.5T680-540q-25 0-42.5 17.5T620-480q0 25 17.5 42.5T680-420ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+    <p class="text-sm text-center font-bold text-gray-700">
+      {{ status }}
+    </p>
+  </div>
+  <!--Deadline-->
+  <div class="flex items-center gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M200-640h560v-80H200v80Zm0 0v-80 80Zm0 560q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v227q-19-9-39-15t-41-9v-43H200v400h252q7 22 16.5 42T491-80H200Zm520 40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40Zm67-105 28-28-75-75v-112h-40v128l87 87Z"/></svg>
+    <p class="text-sm text-center text-gray-700">
+      {{ limite }}
+    </p>
+  </div>
+
+</div>
+
