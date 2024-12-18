@@ -1,4 +1,4 @@
-<div class="font-roboto bg-gray-200 h-screen grid place-items-center">
+<div class="font-roboto bg-gray-200 fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
   <form class="bg-[#16324F] rounded-lg shadow w-[40em] p-6">
     <!--Texto inicio-->
     <div class="mb-12 mt-[2em]">
@@ -91,6 +91,15 @@
       >
         Registrar empleado
       </button>
+       <!-- Footer -->
+    <div class="mt-6 flex justify-end">
+      <button
+        (click)="closeModal()"
+        class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded transition"
+      >
+        Cerrar
+      </button>
+    </div>
     </div>
   </form>
 </div>

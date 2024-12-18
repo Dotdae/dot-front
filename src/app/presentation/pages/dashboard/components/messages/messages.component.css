@@ -1,0 +1,34 @@
+.chat-container {
+  display: flex;
+}
+
+.user-list {
+  width: 200px;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 10px;
+}
+
+.messages {
+  height: 300px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+.message-input {
+  display: flex;
+  align-items: center;
+}
+
+textarea {
+  flex: 1;
+  height: 50px;
+}
+
+button {
+  margin-left: 10px;
+}

@@ -3,16 +3,18 @@ import { RouterLink } from '@angular/router';
 import { GetAllEmployeesUseCase } from '@application/usecases/employee/get-all-employees.usecase';
 import { DeleteEmployeeUseCase } from '@application/usecases/employee/delete-employee.usecase';
 import { Employee } from '@domain/models/employee.model';
+import { AddComponent } from "./add/add.component";
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, AddComponent],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css'
 })
 
 export class EmployeesComponent implements OnInit {
 
+  isModalOpen = false; // Estado para controlar la visibilidad del modal
   employees: Employee[] = []
   employeeNumber: number = 0;
   femNumber: number = 0;
@@ -88,6 +90,19 @@ export class EmployeesComponent implements OnInit {
      }
     })
 
+  }
+
+  openModal() {
+    this.isModalOpen = true; // Abre el modal
+  }
+
+  closeModal() {
+    this.isModalOpen = false; // Cierra el modal
+  }
+
+  confirmModalAction() {
+    console.log('Acción confirmada'); // Acción al confirmar
+    this.isModalOpen = false; // Cierra el modal después de confirmar
   }
 
 }

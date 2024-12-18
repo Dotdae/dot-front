@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CreateEmployeeUseCase } from '@application/usecases/employee/create-employee.usecase';
@@ -11,6 +11,9 @@ import { Employee } from '@domain/models/employee.model';
   styleUrl: './add.component.css'
 })
 export class AddComponent {
+
+  @Output() close = new EventEmitter<void>(); // Emite un evento para cerrar el modal
+  @Output() confirm = new EventEmitter<void>(); // Emite un evento para confirmar la acción
 
   roles = [{
     id: 1,
@@ -57,7 +60,10 @@ export class AddComponent {
 
     this.createEmployeeUseCase.execute(employee).subscribe({
       next: () => {
-        this.router.navigate(['/dashboard/empleados']);
+        this.showToast('Empleado creado exitosamente', 'success');
+        setTimeout(() => {
+          this.closeModal();
+        }, 2000); // Espera 2 segundos antes de cerrar el modal
 
       },
       error: () => {
@@ -67,6 +73,25 @@ export class AddComponent {
       }
     });
 
+  }
+
+  closeModal() {
+    this.close.emit(); // Llama al método del componente padre para cerrar el modal
+  }
+
+  confirmAction() {
+    this.confirm.emit(); // Llama al método del componente padre para confirmar
+  }
+
+  showToast(message: string, type: 'success' | 'error'): void {
+    // Aquí puedes implementar un método para mostrar el toast
+    const toast = document.createElement('div');
+    toast.innerText = message;
+    toast.className = `
+      fixed bottom-4 right-4 px-4 py-2 rounded shadow-md text-white
+      ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}
+    `;
+    document.body.appendChild(toast);
   }
 
 }

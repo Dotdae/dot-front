@@ -1,0 +1,34 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-lg mx-4 p-6">
+    <!-- Header -->
+    <div class="flex justify-between items-center border-b pb-3">
+      <h3 class="text-lg font-semibold text-gray-800">Detalles del Empleado</h3>
+      <button
+        (click)="closeModal()"
+        class="text-gray-500 hover:text-gray-800 font-bold transition-transform transform hover:scale-110"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="mt-4 text-gray-600">
+      <p><span class="font-bold text-gray-800">ID:</span> {{ data?.id }}</p>
+      <p><span class="font-bold text-gray-800">Nombre:</span> {{ data?.nombre }}</p>
+      <p><span class="font-bold text-gray-800">Edad:</span> {{ data?.edad }}</p>
+      <p><span class="font-bold text-gray-800">Dirección:</span> {{ data?.direccion }}</p>
+      <p><span class="font-bold text-gray-800">Salario:</span> ${{ data?.salario }}</p>
+      <p><span class="font-bold text-gray-800">Rol:</span> {{ data?.rol }}</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-6 flex justify-end">
+      <button
+        (click)="closeModal()"
+        class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded transition"
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
