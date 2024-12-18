@@ -38,12 +38,25 @@
           <div class="bg-white rounded-lg shadow">
               <div class="p-4 flex justify-between items-center border-b">
                   <div class="flex space-x-4">
-                      <input type="text" placeholder="Nombre del empleado" class="border rounded px-2 py-1">
-                      <select class="border rounded px-2 py-1">
-                          <option>Sector</option>
+                     <!-- Input de búsqueda por nombre -->
+                     <input
+                     type="text"
+                     placeholder="Nombre del empleado"
+                     class="border rounded px-2 py-1"
+                     [(ngModel)]="searchName"
+                     (ngModelChange)="filterEmployees()"
+                      />
+                      <select class="border rounded px-2 py-1" [(ngModel)]="searchSector" (ngModelChange)="filterEmployees()">
+                        <option value="0">Sector</option>
+                        @for (sector of sectors; track sector) {
+                          <option [value]="sector.id">{{ sector.nombre }}</option>
+                        }
                       </select>
-                      <select class="border rounded px-2 py-1">
-                          <option>Estatus</option>
+                      <select class="border rounded px-2 py-1" [(ngModel)]="searchStatus" (ngModelChange)="filterEmployees()">
+                        <option value="">Estatus</option>
+                        @for (status of statuses; track status) {
+                          <option [value]="status">{{ status }}</option>
+                        }
                       </select>
                   </div>
                   <button (click)="openModal()" class="bg-green-400 text-white px-4 py-2 rounded-lg flex items-center">
