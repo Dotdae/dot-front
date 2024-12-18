@@ -4,6 +4,8 @@ import { GetAllEmployeesUseCase } from '@application/usecases/employee/get-all-e
 import { DeleteEmployeeUseCase } from '@application/usecases/employee/delete-employee.usecase';
 import { Employee } from '@domain/models/employee.model';
 import { AddComponent } from "./add/add.component";
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-employees',
   standalone: true,
@@ -83,7 +85,16 @@ export class EmployeesComponent implements OnInit {
 
     this.deleteEmployeeUseCase.execute(id).subscribe({
      next: () => {
-      this.loadEmployees();
+
+        Swal.fire({
+          title: "Empleado eliminado",
+          text: "El empleado ha sido eliminado con éxito.",
+          icon: "success",
+          timer: 2000, // Duración del toast
+          timerProgressBar: true, // Barra de progreso
+        });
+
+        this.loadEmployees();
      },
      error: (err) => {
       console.log(err);
