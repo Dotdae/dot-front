@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CreateEmployeeUseCase } from '@application/usecases/employee/create-employee.usecase';
 import { Employee } from '@domain/models/employee.model';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-add',
   standalone: true,
@@ -83,15 +85,16 @@ export class AddComponent {
     this.confirm.emit(); // Llama al método del componente padre para confirmar
   }
 
-  showToast(message: string, type: 'success' | 'error'): void {
-    // Aquí puedes implementar un método para mostrar el toast
-    const toast = document.createElement('div');
-    toast.innerText = message;
-    toast.className = `
-      fixed bottom-4 right-4 px-4 py-2 rounded shadow-md text-white
-      ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}
-    `;
-    document.body.appendChild(toast);
+   // Método para mostrar un toast
+   showToast(message: string, type: 'success' | 'error'): void {
+    Swal.fire({
+      title: message,
+      text: "El empleado ha sido añadido con éxito.",
+      icon: type,
+      timer: 2000, // Duración del toast
+      timerProgressBar: true, // Barra de progreso
+    });
+
   }
 
 }
