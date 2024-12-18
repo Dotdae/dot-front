@@ -1,9 +1,11 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetEmployeeIdUseCase } from '@application/usecases/employee/get-employee-id.usecase';
 import { CreateTaskUseCase } from '@application/usecases/task/create-task.usecase';
 import { Task } from '@domain/models/task.model';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-create-task',
@@ -14,7 +16,13 @@ import { Task } from '@domain/models/task.model';
 })
 export class CreateTaskComponent implements OnInit{
 
+  @Output() close = new EventEmitter<void>(); // Emite un evento para cerrar el modal
+  @Output() confirm = new EventEmitter<void>(); // Emite un evento para confirmar la acción
+  @Input() employeeID!: number;
+
+
   employeeName: string = '';
+
 
   cat = [{
     id: 1,
@@ -53,9 +61,8 @@ export class CreateTaskComponent implements OnInit{
 
   ngOnInit(): void {
 
-    const employeeID: number = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.getEmployeeById.execute(employeeID).subscribe({
+    this.getEmployeeById.execute(this.employeeID).subscribe({
       next: (data) =>{
         this.employeeName = data.nombre;
       },
@@ -68,7 +75,6 @@ export class CreateTaskComponent implements OnInit{
 
   onsubmitTask(){
 
-    const employeeID: number = Number(this.route.snapshot.paramMap.get('id'));
 
     const task: Task = new Task (
       this.titulo,
@@ -79,9 +85,16 @@ export class CreateTaskComponent implements OnInit{
       this.descripcion
     )
 
-    this.createTask.execute(employeeID, task).subscribe({
+    this.createTask.execute(this.employeeID, task).subscribe({
       next: () => {
-        this.router.navigate(['/dashboard/empleados']);
+        Swal.fire({
+             title: "Tarea asignada",
+             text: `Se le ha asignado una tarea al empleado ${this.employeeName}.`,
+             icon: "success",
+             timer: 2000, // Duración del toast
+             timerProgressBar: true, // Barra de progreso
+           });
+          this.closeModal();
       },
       error: (err) =>{
         console.log(task)
@@ -90,8 +103,14 @@ export class CreateTaskComponent implements OnInit{
     });
 
 
-
   }
 
+  closeModal() {
+    this.close.emit(); // Llama al método del componente padre para cerrar el modal
+  }
+
+  confirmAction() {
+    this.confirm.emit(); // Llama al método del componente padre para confirmar
+  }
 
 }

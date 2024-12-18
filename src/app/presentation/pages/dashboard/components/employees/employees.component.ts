@@ -5,11 +5,12 @@ import { DeleteEmployeeUseCase } from '@application/usecases/employee/delete-emp
 import { Employee } from '@domain/models/employee.model';
 import { AddComponent } from "./add/add.component";
 import Swal from 'sweetalert2';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [RouterLink, AddComponent],
+  imports: [AddComponent, CreateTaskComponent],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css'
 })
@@ -17,7 +18,9 @@ import Swal from 'sweetalert2';
 export class EmployeesComponent implements OnInit {
 
   isModalOpen = false; // Estado para controlar la visibilidad del modal
+  isTaskOpen = false; // Flag para la tarea
   employees: Employee[] = []
+  employeeID: any;
   employeeNumber: number = 0;
   femNumber: number = 0;
   menNumber: number = 0;
@@ -111,9 +114,23 @@ export class EmployeesComponent implements OnInit {
     this.isModalOpen = false; // Cierra el modal
   }
 
+  openCreateTask(id: any){
+    this.employeeID = id;
+    this.isTaskOpen = true;
+  }
+
+  closeCreateTask(){
+    this.isTaskOpen = false;
+  }
+
+
   confirmModalAction() {
     console.log('Acción confirmada'); // Acción al confirmar
     this.isModalOpen = false; // Cierra el modal después de confirmar
+  }
+
+  confirmTaskAction(){
+    this.isTaskOpen = false;
   }
 
 }

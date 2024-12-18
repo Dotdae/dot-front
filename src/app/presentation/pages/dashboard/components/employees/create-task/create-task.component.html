@@ -1,4 +1,4 @@
-<div class="flex h-screen">
+<div class="bg-gray-200 fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
   <div class="container mx-auto mt-24 p-4">
     <div class="flex items-center justify-center">
       <div class="bg-[#16324F] rounded-lg shadow-lg p-8 w-full max-w-6xl h-[43em]">
@@ -68,6 +68,15 @@
               <button (click)="onsubmitTask()" type="submit" class="ml-3 px-4 py-2 text-sm font-medium text-white bg-[#3E92CC] border border-transparent rounded-md shadow-sm hover:bg-[#2A628F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3E92CC]">
                 Crear
               </button>
+               <!-- Footer -->
+               <div class="mt-6 flex justify-end">
+                <button
+                  (click)="closeModal()"
+                  class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded transition"
+                >
+                  Cerrar
+                </button>
+              </div>
             </div>
           </div>
         </form>
