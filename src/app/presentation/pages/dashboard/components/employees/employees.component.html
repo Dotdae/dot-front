@@ -67,6 +67,10 @@
              <!-- Contenedor para tarjetas con scroll -->
               <div class="p-4 max-h-[40em] overflow-y-auto custom-scroll">
                   <div class="grid grid-cols-5 gap-6">
+                      <!-- Verificar si hay empleados -->
+                      @if (filteredEmployees.length === 0) {
+                        <p class="text-center text-gray-500 col-span-5">No hay empleados disponibles</p>
+                      }
                       <!-- Employee Card (repeat for each employee) -->
                        @for (employee of getPagedEmployees(); track employee.id) {
                         <div class="bg-[#16324F] rounded-lg shadow p-4 text-center">
