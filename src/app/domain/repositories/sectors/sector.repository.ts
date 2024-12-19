@@ -4,5 +4,6 @@ import { Sector } from "../../models/sector.model";
 export interface SectorRepository{
 
   getAllSectors(): Observable<Sector[]>;
+  updateNumberEmployees(nombre: string): Observable<Sector>;
 
 }

@@ -18,5 +18,9 @@ export class SectorRepositoryImplementation implements SectorRepository{
     return this.http.get<Sector[]>(`${this.apiUrl}/sectors`);
   }
 
+  updateNumberEmployees(nombre: string): Observable<Sector> {
+    return this.http.put<Sector>(`${this.apiUrl}/sector`, {nombre});
+  }
+
 
 }

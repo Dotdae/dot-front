@@ -5,6 +5,7 @@ import { CardComponent } from './components/card/card.component';
 import { GetEmployeeTasksUseCase } from '@application/usecases/task/get-employee-tasks.usecase';
 import { updateTaskStatusUseCase } from '@application/usecases/task/update-task-status.usecase';
 import { updateTaskTimeUseCase } from '@application/usecases/task/update-task-time.usecase';
+import { UpdateNumberSectorUseCase } from '@application/usecases/sector/update-number-sector.usecase';
 import { Task } from '@domain/models/task.model';
 
 @Component({
@@ -21,13 +22,16 @@ export class ActivitiesComponent implements OnInit{
   constructor(
     private getEmployeeTask: GetEmployeeTasksUseCase,
     private updateStatusTask: updateTaskStatusUseCase,
-    private updateTimeTask: updateTaskTimeUseCase
+    private updateTimeTask: updateTaskTimeUseCase,
+    private updateNumberSector: UpdateNumberSectorUseCase
   ){}
 
   ngOnInit(): void {
 
     this.getEmployeeTask.execute(16).subscribe({
       next: (tasks ) => {
+
+        console.log(tasks);
 
         this.tasks = tasks.map(task => ({
             ...task,
@@ -77,6 +81,11 @@ export class ActivitiesComponent implements OnInit{
 
       this.updateTaskStatus(Number(taskId), newStatus);
 
+
+
+       // Buscamos la tarea por el ID
+       console.log(taskId);
+
       if(newStatus === 'Completada'){
         const currentTime = new Date();
         const time = currentTime.toTimeString().split(' ')[0];
@@ -89,6 +98,33 @@ export class ActivitiesComponent implements OnInit{
             console.error(error);
           }
         })
+
+        // Reducir numero de empleado
+        const tareaSeleccionada = this.tasks.find(tarea => tarea.id === Number(taskId));
+
+        // Verificamos si la tarea fue encontrada
+        if (tareaSeleccionada) {
+          // Accedemos al sector de la tarea seleccionada
+          const nombre = tareaSeleccionada.sector;
+
+          // Si el sector está vacío o no está asignado, mostramos un mensaje adecuado
+          if (nombre) {
+              console.log("Sector de la tarea: ", nombre);
+              this.updateNumberSector.execute(nombre).subscribe({
+               next: (updatedSector) => {
+                 console.log('Sector updated!')
+               },
+               error: (error) => {
+                 console.error(error);
+               }
+              });
+          } else {
+              console.log("Esta tarea no tiene un sector asignado.");
+          }
+          } else {
+              console.log("Tarea no encontrada");
+          }
+
       }
 
       // Update status on backend.
