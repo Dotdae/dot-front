@@ -28,16 +28,11 @@ export class AuthRepositoryImplementation implements AuthRepository {
       tap( employee => {
         localStorage.setItem(this.employeeKey, JSON.stringify(employee));
 
-        this.chatService.connect(employee.nombre);
       })
 
     )
   }
 
-  // Reconectar socket
-  connectSocket(userName: string): void {
-    this.chatService.connect(userName);
-  }
 
   logout(): void {
 
@@ -46,7 +41,6 @@ export class AuthRepositoryImplementation implements AuthRepository {
         localStorage.removeItem(this.employeeKey); // Cambia según el nombre de tu clave
         sessionStorage.clear(); // Limpia todo lo almacenado en sessionStorage
         // Desconectar el socket
-        this.chatService.disconnect();
         this.router.navigate(['/login']);
       },
       error: (err) => {
@@ -54,6 +48,7 @@ export class AuthRepositoryImplementation implements AuthRepository {
       }
     });
   }
+
 
   isAuthenticated(): void {
 

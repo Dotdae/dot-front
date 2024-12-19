@@ -3,6 +3,8 @@ import { FooterComponent } from "../../components/footer/footer.component";
 import { AuthService } from '@infrastructure/services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthRepositoryImplementation } from '@infrastructure/auth/auth.repository.implementation';
+import { ChatService } from '@infrastructure/services/chat.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -17,13 +19,21 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private auth: AuthRepositoryImplementation,
+    private socketService: ChatService
   ){}
 
   onLogin(){
 
     this.authService.login(this.numeroEmpleado, this.empleadoPassword).subscribe({
-      next: () => this.router.navigate(['/dashboard']),
+      next: () => {
+        const username = this.auth.getEmployeeName();
+        if(username){
+          this.socketService.emit('register', username);
+        }
+        this.router.navigate(['/dashboard'])
+      },
       error: (err) => console.log('Error en login:' + err.message)
     });
 
