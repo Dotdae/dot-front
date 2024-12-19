@@ -9,8 +9,8 @@ export class Employee {
     public direccion: string,
     public salario: number,
     public rol: 'Empleado' | 'Supervisor' = 'Empleado',
+    public sector_actual?: string,    // Opcionalmente, puedes cargar el sector completo
     public sectorId?: number,  // Nuevo campo para asociar al sector
-    public sector?: Sector,    // Opcionalmente, puedes cargar el sector completo
     public id?: number,
     public status?: 'Activo' | 'Inactivo',
     public userImage?: string,

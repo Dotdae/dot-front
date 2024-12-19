@@ -74,11 +74,7 @@ export class EmployeesComponent implements OnInit {
 
   loadSectors(): void {
     // Simulación de la carga de sectores. Deberías obtenerlos de una API o servicio
-    this.sectors = [
-      new Sector(1, 'TI'),
-      new Sector(2, 'Ventas'),
-      new Sector(3, 'Recursos Humanos')
-    ];
+
   }
 
   // Función para cambiar de página.

@@ -71,4 +71,31 @@ export class RecentComponent implements OnInit{
     return employee ? employee.nombre : 'Desconocido';
   }
 
+  getTimeElapsed(horaLimite: string): string {
+    const limite = new Date();
+    const [hours, minutes, seconds] = horaLimite.split(':').map(Number);
+    limite.setHours(hours, minutes, seconds);
+
+    const now = new Date();
+    const diffInMs = now.getTime() - limite.getTime();
+    const diffInSeconds = Math.floor(diffInMs / 1000);
+
+    if (diffInSeconds < 60) {
+      return `Hace unos segundos`;
+    }
+
+    const diffInMinutes = Math.floor(diffInSeconds / 60);
+    if (diffInMinutes < 60) {
+      return `Hace ${diffInMinutes} minutos`;
+    }
+
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    if (diffInHours < 24) {
+      return `Hace ${diffInHours} horas`;
+    }
+
+    const diffInDays = Math.floor(diffInHours / 24);
+    return `Hace ${diffInDays} días`;
+  }
+
 }

@@ -1,7 +1,7 @@
 <div class="bg-gray-200 fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
   <div class="container mx-auto mt-24 p-4">
     <div class="flex items-center justify-center">
-      <div class="bg-[#16324F] rounded-lg shadow-lg p-8 w-full max-w-6xl h-[43em]">
+      <div class="bg-[#16324F] rounded-lg shadow-lg p-8 w-full max-w-6xl h-[45em]">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-3xl font-semibold text-white flex items-center font-poppins">
             Crear nueva tarea
@@ -27,33 +27,50 @@
                 }
               </select>
             </div>
-            <!-- Trabajador -->
-            <div>
-              <label for="worker" class="block text-xl font-medium text-white mb-1">Trabajador</label>
-              <input type="text" id="engaged-people" value="{{ employeeName }}" name="worker" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50" placeholder="Nombre del trabajador">
-            </div>
-            <!-- Prioridad -->
-            <div>
-              <label for="roles" class="block text-xl font-medium text-white mb-1">Prioridad</label>
-              <select class="w-full px-12 py-4 border border-[#18435A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3E92CC]" name="category" [(ngModel)]="prioridad">
-                @for (prioridad of prio; track prioridad.id) {
+            <div class="flex flex-row gap-6 mt-12">
+              <!-- Trabajador -->
+              <div>
+                <label for="worker" class="block text-xl font-medium text-white mb-1">Trabajador</label>
+                <input type="text" id="engaged-people" value="{{ employeeName }}" name="worker" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50" placeholder="Nombre del trabajador">
+              </div>
+              <!--Sector-->
+              <div>
+                <label for="roles" class="block text-xl font-medium text-white mb-1">Sector</label>
+                <select class="w-full px-12 py-4 border border-[#18435A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3E92CC]" name="category" [(ngModel)]="sector">
+                  @for (sector of sectors; track sector.id) {
 
-                  <option [ngValue]="prioridad.name">
-                    {{ prioridad.name }}
-                  </option>
-                }
-              </select>
+                    <option [ngValue]="sector.nombre">
+                      {{ sector.nombre }}
+                    </option>
+                  }
+                </select>
+              </div>
+              <!-- Prioridad -->
+              <div>
+                <label for="roles" class="block text-xl font-medium text-white mb-1">Prioridad</label>
+                <select class="w-full px-12 py-4 border border-[#18435A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#3E92CC]" name="category" [(ngModel)]="prioridad">
+                  @for (prioridad of prio; track prioridad.id) {
+
+                    <option [ngValue]="prioridad.name">
+                      {{ prioridad.name }}
+                    </option>
+                  }
+                </select>
+              </div>
             </div>
-            <!-- Fecha límite -->
             <div>
-              <label for="due-date" class="block text-xl font-medium text-white mb-1">Fecha límite</label>
-              <input [(ngModel)]="fecha_limite" type="date" id="due-date" name="due-date" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50">
+              <!-- Fecha límite -->
+              <div class="flex flex-col gap-6">
+                <label for="due-date" class="block text-xl font-medium text-white mb-1">Fecha límite</label>
+                <input [(ngModel)]="fecha_limite" type="date" id="due-date" name="due-date" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50">
+              </div>
+              <!-- Hora -->
+              <div>
+                <label for="time" class="block text-xl font-medium text-white mb-1">Hora</label>
+                <input [(ngModel)]="hora_limite" type="time" id="time" name="time" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50">
+              </div>
             </div>
-            <!-- Hora -->
-            <div>
-              <label for="time" class="block text-xl font-medium text-white mb-1">Hora</label>
-              <input [(ngModel)]="hora_limite" type="time" id="time" name="time" class="block w-full h-12 p-4 rounded-md border-gray-300 shadow-sm focus:border-[#3E92CC] focus:ring focus:ring-[#3E92CC] focus:ring-opacity-50">
-            </div>
+
             <!-- Descripción -->
             <div class="col-span-2">
               <label for="description" class="block text-xl font-medium text-white mb-4">Descripción</label>
@@ -61,7 +78,7 @@
               <p class="mt-1 text-xs text-gray-300">Notas adicionales</p>
             </div>
             <!-- Botones -->
-            <div class="col-span-2 flex justify-end mt-4">
+            <div class="col-span-2 flex justify-end">
               <button type="button" class="px-4 py-2 text-sm font-medium text-white bg-[#3E92CC] rounded-md shadow-sm hover:bg-[#2A628F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3E92CC]">
                 Cancelar
               </button>
@@ -69,14 +86,12 @@
                 Crear
               </button>
                <!-- Footer -->
-               <div class="mt-6 flex justify-end">
                 <button
                   (click)="closeModal()"
-                  class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded transition"
+                  class="ml-3 px-4 py-2 text-sm font-medium text-white bg-[#3E92CC] border border-transparent rounded-md shadow-sm hover:bg-[#2A628F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3E92CC]"
                 >
                   Cerrar
                 </button>
-              </div>
             </div>
           </div>
         </form>

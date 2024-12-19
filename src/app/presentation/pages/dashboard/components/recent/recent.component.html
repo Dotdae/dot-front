@@ -105,7 +105,7 @@
                         </div>
                         <div class="text-center pt-8">
                             <p class="font-semibold">{{task.titulo}}</p>
-                            <p class="text-sm text-gray-500">Hace 40 minutos</p>
+                            <p class="text-sm text-gray-500">{{ getTimeElapsed(task.hora_limite)}}</p>
                         </div>
                       </div>
                     }

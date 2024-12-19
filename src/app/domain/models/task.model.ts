@@ -7,6 +7,7 @@ export class Task {
     public fecha_limite: string,
     public hora_limite: string,
     public descripcion: string,
+    public sector: string,
     public id?: number,
     public empleado_id?: number,
     public status?: 'Pendiente' | 'En proceso' | 'Completada',

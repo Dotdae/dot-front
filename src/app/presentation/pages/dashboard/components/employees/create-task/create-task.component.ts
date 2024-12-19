@@ -2,6 +2,7 @@ import { Component , OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetEmployeeIdUseCase } from '@application/usecases/employee/get-employee-id.usecase';
+import { GetAllSectorsUseCase } from '@application/usecases/sector/get-all-sectors.usecase';
 import { CreateTaskUseCase } from '@application/usecases/task/create-task.usecase';
 import { Task } from '@domain/models/task.model';
 import Swal from 'sweetalert2';
@@ -22,6 +23,8 @@ export class CreateTaskComponent implements OnInit{
 
 
   employeeName: string = '';
+
+  sectors: any [] = [];
 
 
   cat = [{
@@ -51,12 +54,13 @@ export class CreateTaskComponent implements OnInit{
   fecha_limite: string = '';
   hora_limite: string = '';
   descripcion: string = '';
+  sector: string = '';
+
 
   constructor(
     private getEmployeeById: GetEmployeeIdUseCase,
     private createTask: CreateTaskUseCase,
-    private route: ActivatedRoute,
-    private router: Router
+    private getAllSectors: GetAllSectorsUseCase
   ){}
 
   ngOnInit(): void {
@@ -71,6 +75,16 @@ export class CreateTaskComponent implements OnInit{
       }
     })
 
+    this.getAllSectors.execute().subscribe({
+      next: (data) =>{
+        this.sectors = data;
+        console.log(this.sectors)
+      },
+      error: (err) => {
+        console.error(err)
+      }
+    });
+
   }
 
   onsubmitTask(){
@@ -82,7 +96,8 @@ export class CreateTaskComponent implements OnInit{
       this.prioridad as 'Alta' | 'Media' | 'Baja',
       this.fecha_limite,
       this.hora_limite,
-      this.descripcion
+      this.descripcion,
+      this.sector
     )
 
     this.createTask.execute(this.employeeID, task).subscribe({

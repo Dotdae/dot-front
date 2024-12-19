@@ -20,6 +20,10 @@ import { AuthRepositoryImplementation } from '@infrastructure/auth/auth.reposito
 import { TASK_REPOSITORY_TOKEN } from '@domain/repositories/task/task.respository.token';
 import { TaskRepositoryImplementation } from '@infrastructure/task/task.repository.implementation';
 
+// Repositories.
+import { SECTOR_REPOSITORY_TOKEN } from '@domain/repositories/sectors/sector-repository.token';
+import { SectorRepositoryImplementation } from '@infrastructure/sector/sector.repository.implementation';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     SweetAlert2Module ,provideHttpClient(withFetch()), provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
@@ -28,7 +32,8 @@ export const appConfig: ApplicationConfig = {
 
     { provide: EMPLOYEE_REPOSITORY_TOKEN, useClass: EmployeeRepositoryImplementation },
     { provide: AUTH_REPOSITORY_TOKEN, useClass: AuthRepositoryImplementation },
-    { provide: TASK_REPOSITORY_TOKEN, useClass: TaskRepositoryImplementation}
+    { provide: TASK_REPOSITORY_TOKEN, useClass: TaskRepositoryImplementation},
+    {provide: SECTOR_REPOSITORY_TOKEN, useClass: SectorRepositoryImplementation}
 
   ]
 };
