@@ -4,7 +4,9 @@ import { ModalComponent } from "../modal/modal.component";
 import { GetDoneTasksUseCase } from '@application/usecases/task/get-done-task.usecase'
 import { Task } from '@domain/models/task.model';
 import { GetAllEmployeesUseCase } from '@application/usecases/employee/get-all-employees.usecase';
+import { GetAllSectorsUseCase } from '@application/usecases/sector/get-all-sectors.usecase';
 import { Employee } from '@domain/models/employee.model';
+import { Sector } from '@domain/models/sector.model';
 
 @Component({
   selector: 'app-recent',
@@ -19,12 +21,13 @@ export class RecentComponent implements OnInit{
 
   employeeData: any;
   employees: Employee[] = [];
+  sectors: Sector[] = [];
 
   completedTasks: any[] = []; // Variable para almacenar las tareas completadas
   employeeName: string = '';
 
 
-  constructor(private authRepository: AuthRepositoryImplementation,  private getDoneTasksUseCase: GetDoneTasksUseCase, private getEmployees: GetAllEmployeesUseCase){}
+  constructor(private authRepository: AuthRepositoryImplementation,  private getDoneTasksUseCase: GetDoneTasksUseCase, private getEmployees: GetAllEmployeesUseCase, private getAllSectors: GetAllSectorsUseCase){}
 
   ngOnInit(): void {
     this.employeeData = this.authRepository.getEmployee();
@@ -38,11 +41,21 @@ export class RecentComponent implements OnInit{
       }
     });
 
+    // Obtener sectores
+    this.getAllSectors.execute().subscribe({
+      next: (sectors) => {
+        this.sectors = sectors;
+      },
+      error: (err) => {
+        console.error('Error al cargar sectores:', err);
+      }
+    });
+
       // Llamar al caso de uso para obtener las tareas completadas
       this.getDoneTasksUseCase.execute().subscribe({
         next: (tasks: Task[]) => {
-          this.completedTasks = tasks.map((task) => ({...task, employeeName: this.getEmployeeName(task.empleado_id)})); // Asignar las tareas completadas a la variable
-          console.log(this.completedTasks);
+          this.completedTasks = tasks.map((task) => ({...task, employeeName: this.getEmployeeName(task.empleado_id)}));
+          this.completedTasks.reverse(); // Motras las tareas completadas de más reciente a más antiguo
         },
         error: (err) => {
           console.error('Error al obtener las tareas completadas:', err);
@@ -96,6 +109,14 @@ export class RecentComponent implements OnInit{
 
     const diffInDays = Math.floor(diffInHours / 24);
     return `Hace ${diffInDays} días`;
+  }
+
+  sortTasks() {
+    console.log(this.completedTasks);
+    // Ordenamos las tareas por hora_limite de más reciente a más antiguo
+    this.completedTasks.sort((a, b) => new Date(b.hora_limite).getTime() - new Date(a.hora_limite).getTime());
+    console.log(this.completedTasks);
+
   }
 
 }

@@ -5,6 +5,7 @@ export class Sector {
     public nombre: string,
     public empleado_id: number,
     public numero_empleados: number,
+    public status?: string,
     public descripcion?: string,
     public createdAt?: Date,
     public updatedAt?: Date

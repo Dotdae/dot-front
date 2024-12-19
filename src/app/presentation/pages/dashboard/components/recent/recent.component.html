@@ -126,94 +126,22 @@
                           </tr>
                       </thead>
                       <tbody>
+                         @for (sector of sectors; track sector.id) {
                           <tr>
-                              <td class="py-2">001</td>
-                              <td class="py-2">
-                                  Diseño
-                              </td>
-                              <td class="py-2">13</td>
+                            <td class="py-2">{{sector.id}}</td>
+                            <td class="py-2">
+                                {{sector.nombre}}
+                            </td>
+                            <td class="py-2">{{sector.numero_empleados}}</td>
+                            @if(sector.status === 'Abierto') {
                               <td class="py-2"><span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Abierto</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
+                            }
+                            @else{
                               <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
-                          <tr>
-                              <td class="py-2">002</td>
-                              <td class="py-2">
-                                  Construcción
-                              </td>
-                              <td class="py-2">10</td>
-                              <td class="py-2"><span class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">Cerrado</span></td>
-                          </tr>
+                            }
+
+                        </tr>
+                         }
                       </tbody>
                   </table>
               </div>
