@@ -5,6 +5,7 @@ export interface TaskRepository {
 
   createTask(employeeId: number, task: Task): Observable<void>;
   getEmployeeTasks(employeeId: number): Observable<Task[]>;
+  getDoneTasks(): Observable<Task[]>;
   updateTaskStatus(taskId: number, status: 'Pendiente' | 'En proceso' | 'Completada' ): Observable<Task>;
 
 }

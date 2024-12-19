@@ -23,6 +23,10 @@ export class TaskRepositoryImplementation implements TaskRepository{
     return this.http.get<Task[]>(`${this.apiUrl}/task/${employeeId}`);
   }
 
+  getDoneTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.apiUrl}/done-tasks`);
+  }
+
   updateTaskStatus(taskId: number, status: "Pendiente" | "En proceso" | "Completada"): Observable<Task> {
     return this.http.put<Task>(`${this.apiUrl}/status/${taskId}`, { status });
   }
