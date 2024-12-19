@@ -4,6 +4,7 @@ import interact from 'interactjs';
 import { CardComponent } from './components/card/card.component';
 import { GetEmployeeTasksUseCase } from '@application/usecases/task/get-employee-tasks.usecase';
 import { updateTaskStatusUseCase } from '@application/usecases/task/update-task-status.usecase';
+import { updateTaskTimeUseCase } from '@application/usecases/task/update-task-time.usecase';
 import { Task } from '@domain/models/task.model';
 
 @Component({
@@ -19,7 +20,8 @@ export class ActivitiesComponent implements OnInit{
 
   constructor(
     private getEmployeeTask: GetEmployeeTasksUseCase,
-    private updateStatusTask: updateTaskStatusUseCase
+    private updateStatusTask: updateTaskStatusUseCase,
+    private updateTimeTask: updateTaskTimeUseCase
   ){}
 
   ngOnInit(): void {
@@ -74,6 +76,20 @@ export class ActivitiesComponent implements OnInit{
           : 'Completada';
 
       this.updateTaskStatus(Number(taskId), newStatus);
+
+      if(newStatus === 'Completada'){
+        const currentTime = new Date();
+        const time = currentTime.toTimeString().split(' ')[0];
+
+        this.updateTimeTask.execute(Number(taskId), time).subscribe({
+          next: (updatedTask) => {
+            console.log('Task updated!')
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        })
+      }
 
       // Update status on backend.
 

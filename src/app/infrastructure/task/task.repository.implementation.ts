@@ -31,4 +31,8 @@ export class TaskRepositoryImplementation implements TaskRepository{
     return this.http.put<Task>(`${this.apiUrl}/status/${taskId}`, { status });
   }
 
+  updateTaskTime(taskId: number, hora_limite: string): Observable<Task> {
+    return this.http.put<Task>(`${this.apiUrl}/time/${taskId}`, { hora_limite });
+  }
+
 }
