@@ -9,7 +9,7 @@ export class ChatService {
   private socket: Socket;
 
   constructor() {
-    this.socket = io('http://localhost:4000', { withCredentials: true });
+    this.socket = io('https://dot-backend-dma3.onrender.com/', { withCredentials: true });
   }
 
   emit(event: string, data: any): void{

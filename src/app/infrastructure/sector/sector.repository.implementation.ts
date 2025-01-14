@@ -10,7 +10,7 @@ import { SectorRepository } from "@domain/repositories/sectors/sector.repository
 
 export class SectorRepositoryImplementation implements SectorRepository{
 
-  private apiUrl = 'http://localhost:4000/api';
+  private apiUrl = 'https://dot-backend-dma3.onrender.com/api';
 
   constructor(private http: HttpClient){}
 

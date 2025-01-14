@@ -10,7 +10,7 @@ import { EmployeeRepository } from "@domain/repositories/employee/employee.repos
 
 export class EmployeeRepositoryImplementation implements EmployeeRepository{
 
-  private apiUrl = 'http://localhost:4000/api';
+  private apiUrl = 'https://dot-backend-dma3.onrender.com/api';
 
   constructor(private http: HttpClient){}
 

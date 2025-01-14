@@ -12,7 +12,7 @@ import { ChatService } from '@infrastructure/services/chat.service';
 
 export class AuthRepositoryImplementation implements AuthRepository {
 
-  private apiUrl = 'http://localhost:4000/api';
+  private apiUrl = 'https://dot-backend-dma3.onrender.com/api';
   private employeeKey = 'empleado';
 
   constructor(

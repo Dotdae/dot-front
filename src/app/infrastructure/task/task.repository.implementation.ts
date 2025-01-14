@@ -10,7 +10,7 @@ import { TaskRepository } from "@domain/repositories/task/task.repository";
 
 export class TaskRepositoryImplementation implements TaskRepository{
 
-  private apiUrl = 'http://localhost:4000/api';
+  private apiUrl = 'https://dot-backend-dma3.onrender.com/api';
 
   constructor(private http: HttpClient){}
 
